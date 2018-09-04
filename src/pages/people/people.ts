@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the ChatRoomPage page.
+ * Generated class for the PeoplePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-chat-room',
-  templateUrl: 'chat-room.html',
+  selector: 'page-people',
+  templateUrl: 'people.html',
 })
-export class ChatRoomPage {
+export class PeoplePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ChatRoomPage');
+    console.log('ionViewDidLoad PeoplePage');
   }
 
 }
