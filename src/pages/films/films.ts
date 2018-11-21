@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the FilmsPage page.
@@ -15,13 +17,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FilmsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    films: Observable<any>;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient) {
+        this.films = this.httpClient.get('https://swapi.co/api/films');
+    this.films
+    .subscribe(data => {
+      console.log('my data: ', data);
+    })
   }
-openDetails() {
-    this.navCtrl.push('FilmDetailsPage');
-    this.navCtrl.push('FilmDetailsPage');
-    this.navCtrl.push("PeoplePage");
-    this.navCtrl.push("PlanetsPage");
+openDetails(film) {
+    this.navCtrl.push('FilmDetailsPage', {film: film});
+//    this.navCtrl.push('FilmDetailsPage', {filmId: 2});
+//    this.navCtrl.push('FilmDetailsPage');
+//    this.navCtrl.push("PeoplePage");
+//    this.navCtrl.push("PlanetsPage");
     //this.navCtrl.parent.select(2);
 
     //this.navCtrl.pop();
