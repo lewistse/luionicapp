@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 
+import { ApiProvider } from './../../providers/api/api';
+
 /**
  * Generated class for the FilmsPage page.
  *
@@ -18,8 +20,12 @@ import { HttpClient } from '@angular/common/http';
 export class FilmsPage {
 
     films: Observable<any>;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient) {
-        this.films = this.httpClient.get('https://swapi.co/api/films');
+//constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient) {
+    constructor(public navCtrl: NavController, public apiProvider: ApiProvider) { 
+    
+        this.films = this.apiProvider.getFilms();
+        
+//    this.films = this.httpClient.get('https://swapi.co/api/films');
     this.films
     .subscribe(data => {
       console.log('my data: ', data);
